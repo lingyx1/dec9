@@ -26,7 +26,8 @@ def edit_squirrel(request, Unique_Squirrel_ID):
     context = {
         'form': form,
     }
-    return render(request, 'squirrel/add.html', context)
+    return render(request, 'squirrel/edit.html', context)
+
 def add_squirrel(request):
     if request.method == 'POST':
         # check form data
@@ -49,3 +50,19 @@ def map(request):
     }
     return render(request, 'squirrel/map.html', context)
 
+def stats_squirrel(request):
+    is_adult = Squirrel.objects.filter(Age = 'Adult').count()
+    is_gray = Squirrel.objects.filter(Primary_Fur_Color = 'Gray').count()
+    is_climbing = Squirrel.objects.filter(Climbing = True).count()
+    is_running = Squirrel.objects.filter(Running = True).count()
+    is_chasing = Squirrel.objects.filter(Chasing = True).count()
+
+    count = [
+            is_adult, is_gray, is_climbing, is_running, is_chasing
+     ]
+
+    context = {
+            'count':count
+    }
+
+    return render(request, 'squirrel/stats.html', context)
