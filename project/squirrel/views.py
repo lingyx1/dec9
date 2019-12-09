@@ -43,7 +43,7 @@ def add_squirrel(request):
     }
     return render(request, 'squirrel/add.html', context)
 
-def map(request):
+def map_squirrel(request):
     sightings = Squirrel.objects.all()[0:99]
     context = {
         'sightings': sightings,

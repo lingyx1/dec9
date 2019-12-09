@@ -20,6 +20,6 @@ from squirrel import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sightings/', include('squirrel.urls')),
-    path('map/', views.map),
+    path('map/', views.map_squirrel),
 
 ]
